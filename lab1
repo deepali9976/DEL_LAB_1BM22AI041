@@ -1,0 +1,40 @@
+from numpy import *
+import matplotlib.pyplot as plt
+def sigmoid(x):
+  return 1/(1+exp(-x))
+
+
+def tanh(x):
+  return exp(x)-exp(-x)/(exp(x)+exp(-x))
+
+def relu(x) :
+  return max(0, x)
+def leaky_rel(x):
+  return max(0.01*x,x)
+def nn_functions(x):
+  print("sigmoid function output",sigmoid(x))
+  print("tanh function output",tanh(x))
+  print("relu function output",relu(x))
+  print("Leaky relu function output",leaky_rel(x))
+nn_functions(21)
+x1 = int(input('1st input:'))
+x2 = int(input('2nd input:'))
+
+x = matrix([[x1,],[x2,]])
+w = matrix([[0.5,],[-0.5]])
+h = w.T*x
+int(bool(tanh(h[0,0])))
+x1 = int(input('1st input:'))
+x2 = int(input('2nd input:'))
+
+x = matrix([[x1,],[x2,]])
+w = matrix([[0.5,],[-0.5]])
+h = w.T*x
+int(bool(sigmoid(h[0,0])))
+x = linspace(-10, 10, 100)
+y = sigmoid(x)
+plt.plot(x, y, label='Sigmoid Function')
+plt.title('Sigmoid Function')
+y = tanh(x)
+plt.plot(x, y)
+plt.title('tanh Function')
